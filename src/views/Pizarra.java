@@ -39,6 +39,8 @@ public class Pizarra extends JFrame implements Runnable {
 		btnTriangulo = new JToggleButton();
 		btnCuadrilatero = new JToggleButton();
 		btnCirculo = new JToggleButton();
+                btnPentagono = new JToggleButton();
+           
 
 		canvasPanel = new CanvasPanel();
 		scrollLogger = new JScrollPane();
@@ -136,6 +138,7 @@ public class Pizarra extends JFrame implements Runnable {
 			btnTriangulo.setEnabled(false);
 			btnCuadrilatero.setEnabled(true);
 			btnCirculo.setEnabled(true);
+                        btnPentagono.setEnabled(true);
 
 			currentFigura = new TrianguloModel();
 		});
@@ -152,6 +155,7 @@ public class Pizarra extends JFrame implements Runnable {
 			btnCuadrilatero.setEnabled(false);
 			btnTriangulo.setEnabled(true);
 			btnCirculo.setEnabled(true);
+                        btnPentagono.setEnabled(true);
 
 			currentFigura = new CuadrilateroModel();
 		});
@@ -168,18 +172,39 @@ public class Pizarra extends JFrame implements Runnable {
 			btnCirculo.setEnabled(false);
 			btnCuadrilatero.setEnabled(true);
 			btnTriangulo.setEnabled(true);
+                        btnPentagono.setEnabled(true);
 
 			currentFigura = new CirculoModel();
+		});
+                
+                btnPentagono.setText("Pentagono");
+		btnPentagono.setFont(new Font("Montserrat", Font.BOLD, 16));
+		btnPentagono.addActionListener((ActionEvent e) -> {
+
+			listModel.checkForIncompletes();
+			repaint();
+
+			logger.append("Se va a crear un polígono de 5 lados.\n");
+
+			btnCuadrilatero.setEnabled(true);
+			btnTriangulo.setEnabled(true);
+			btnCirculo.setEnabled(true);
+                        btnPentagono.setEnabled(false);
+
+			currentFigura = new PentagonoModel();
 		});
 
 		buttonGroup.add(btnTriangulo);
 		buttonGroup.add(btnCuadrilatero);
 		buttonGroup.add(btnCirculo);
+                buttonGroup.add(btnPentagono);
+             
 
 		leftPanel.add(leftPanelTitle);
 		leftPanel.add(btnTriangulo);
 		leftPanel.add(btnCuadrilatero);
 		leftPanel.add(btnCirculo);
+                leftPanel.add(btnPentagono);
 
 		/* centerPanel components & design */
 		centerPanel.setLayout(new BorderLayout());
@@ -282,6 +307,7 @@ public class Pizarra extends JFrame implements Runnable {
 	private JToggleButton btnTriangulo;
 	private JToggleButton btnCuadrilatero;
 	private JToggleButton btnCirculo;
+        private JToggleButton btnPentagono;
 
 	/* centerPanel components */
 	private CanvasPanel canvasPanel;
