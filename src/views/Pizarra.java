@@ -1,6 +1,10 @@
 package views;
 
 import java.awt.*;
+import static java.awt.Color.BLUE;
+import static java.awt.Color.GREEN;
+import static java.awt.Color.RED;
+import static java.awt.Color.YELLOW;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -40,6 +44,13 @@ public class Pizarra extends JFrame implements Runnable {
 		btnCuadrilatero = new JToggleButton();
 		btnCirculo = new JToggleButton();
                 btnPentagono = new JToggleButton();
+                
+                btnTriangulo.setBackground(BLUE);
+                btnCuadrilatero.setBackground(RED);
+                btnCirculo.setBackground(GREEN);
+                btnPentagono.setBackground(YELLOW);
+                
+                
            
 
 		canvasPanel = new CanvasPanel();
